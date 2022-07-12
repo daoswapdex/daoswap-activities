@@ -18,6 +18,7 @@ export default {
   "Membership Pass": "Membership Pass",
   "Aurora Anniversary Celebration & Meta Universe First Industry Summit":
     "Aurora Anniversary Celebration & Meta Universe First Industry Summit",
+  "Exchange Success": "Exchange Success",
 
   "Stake Amount": "Stake Amount",
   "Stake begin in": "Stake begin in",

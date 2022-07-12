@@ -17,6 +17,7 @@ export default {
   "Membership Pass": "入会通证",
   "Aurora Anniversary Celebration & Meta Universe First Industry Summit":
     "极光周年庆典暨元宇宙首届行业峰会",
+  "Exchange Success": "兑换成功",
 
   "Stake Amount": "质押额度",
   "Stake begin in": "认购开始于",

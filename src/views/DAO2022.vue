@@ -98,10 +98,7 @@
             <v-card-text v-else>
               <v-row>
                 <v-col cols="12">
-                  <div
-                    class="text-h5"
-                    v-if="!contractInfo.isOpen && !accountAssets.haveTicket"
-                  >
+                  <div class="text-h5" v-if="!accountAssets.haveTicket">
                     {{ $t("Activity is not in progress") }}
                   </div>
                   <div class="text-h5" style="color: #93B954;" v-else>
@@ -451,6 +448,9 @@ export default {
           .methods.exchange()
           .send({ from: this.address })
           .then(() => {
+            this.operationResult.color = "success";
+            this.operationResult.snackbar = true;
+            this.operationResult.text = "Exchange Success";
             this.loading = false;
             this.getInfo();
           })
