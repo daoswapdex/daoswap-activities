@@ -1,10 +1,11 @@
-// export const ExchangeTicketContractAddress =
-//   "0x2a4e2ccf58c27f318f6d1388b6ff6ab90457cada";
-
 export const ExchangeTicketContractAddress = [
   {
     chainId: 256,
     address: "0x620CcD4a41178Dd9870fF541ad6fE6e957f68584"
+  },
+  {
+    chainId: 56,
+    address: "0x2D2770c69ff2559F37B1c7E468FA32757D171DAb"
   }
 ];
 
