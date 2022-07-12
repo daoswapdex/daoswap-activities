@@ -42,7 +42,7 @@
               v-if="
                 contractInfo.token &&
                   contractInfo.isOpen &&
-                  !accountAssets.haveTicket
+                  accountAssets.ableExchange
               "
             >
               <v-container class="grey lighten-5">
