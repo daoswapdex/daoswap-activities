@@ -9,10 +9,14 @@ export default {
 
   Close: "关闭",
   "No Data": "暂无数据",
-  "Exchange Ticket": "兑换门票",
+  "Exchange Ticket": "兑换通证",
   "Activity is not in progress": "活动未在进行中",
-  "You already have a ticket": "您已经拥有票",
+  "You already have a ticket": "您已经拥有通证",
   "Please select the token to be used for exchange": "请选择兑换要使用的Token",
+  "Token Adress": "通证地址",
+  "Membership Pass": "入会通证",
+  "Aurora Anniversary Celebration & Meta Universe First Industry Summit":
+    "极光周年庆典暨元宇宙首届行业峰会",
 
   "Stake Amount": "质押额度",
   "Stake begin in": "认购开始于",

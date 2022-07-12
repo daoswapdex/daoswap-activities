@@ -14,6 +14,10 @@ export default {
   "You already have a ticket": "You already have a ticket",
   "Please select the token to be used for exchange":
     "Please select the token to be used for exchange",
+  "Token Adress": "Token Adress",
+  "Membership Pass": "Membership Pass",
+  "Aurora Anniversary Celebration & Meta Universe First Industry Summit":
+    "Aurora Anniversary Celebration & Meta Universe First Industry Summit",
 
   "Stake Amount": "Stake Amount",
   "Stake begin in": "Stake begin in",

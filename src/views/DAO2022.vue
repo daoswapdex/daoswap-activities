@@ -8,12 +8,36 @@
               <v-avatar size="24" class="mr-2">
                 <img :src="require('@/assets/logo.png')" alt="list" />
               </v-avatar>
-              <span class="title font-weight-light">
-                {{ $t("Exchange Ticket") }}
+              <span class="title font-weight-light text-body-2">
+                {{
+                  $t(
+                    "Aurora Anniversary Celebration & Meta Universe First Industry Summit"
+                  )
+                }}-{{ $t("Membership Pass") }}
               </span>
+              <!-- <v-list two-line>
+                <v-list-item>
+                  <v-list-item-avatar class="mt-0 mb-0">
+                    <v-avatar size="40" class="mr-2">
+                      <img :src="require('@/assets/logo.png')" alt="list" />
+                    </v-avatar>
+                  </v-list-item-avatar>
+                  <v-list-item-content class="pt-0 pb-0">
+                    <v-list-item-title class="text-h5" style="color: #93B954">
+                      {{ $t("Membership Pass") }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle class="text-body-1">
+                      {{
+                        $t(
+                          "Aurora Anniversary Celebration & Meta Universe First Industry Summit"
+                        )
+                      }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list> -->
             </v-card-title>
             <v-divider class="mx-4"></v-divider>
-            <!-- chainId === 56 &&  -->
             <v-card-text
               v-if="
                 contractInfo.token &&
@@ -21,27 +45,13 @@
                   !accountAssets.haveTicket
               "
             >
-              <!-- <div>
-                兑换出去的币地址：{{ contractInfo.exchangeOutTokenAddress }}
-              </div>
-              <div>
-                兑换出去的数量：{{ contractInfo.exchangeOutTokenAmount }}
-              </div>
-              <div>
-                兑换进来的币地址：{{ contractInfo.exchangeInTokenAddress }}
-              </div>
-              <div>
-                兑换进来的数量：{{ contractInfo.exchangeInTokenAmount }}
-              </div> -->
               <v-container class="grey lighten-5">
                 <v-row no-gutters class="align-center">
                   <v-col cols="4">
                     <v-card class="pa-2 exchange-info" outlined tile>
-                      <p class="font-weight-bold text-h6">
-                        {{ exchangeInToken.symbol }}
-                      </p>
-                      <div class="font-weight-bold">
+                      <div class="text-body-2">
                         {{ contractInfo.exchangeInTokenAmount }}
+                        {{ exchangeInToken.symbol }}
                       </div>
                     </v-card>
                   </v-col>
@@ -54,11 +64,9 @@
                   </v-col>
                   <v-col cols="4">
                     <v-card class="pa-2 exchange-info" outlined tile>
-                      <p class="font-weight-bold text-h6">
-                        {{ exchangeOutToken.symbol }}
-                      </p>
-                      <div class="font-weight-bold">
+                      <div class="text-body-2">
                         {{ contractInfo.exchangeOutTokenAmount }}
+                        {{ exchangeOutToken.symbol }}
                       </div>
                     </v-card>
                   </v-col>
@@ -91,14 +99,32 @@
               <v-row>
                 <v-col cols="12">
                   <div
-                    class="display-1"
+                    class="text-h5"
                     v-if="!contractInfo.isOpen && !accountAssets.haveTicket"
                   >
                     {{ $t("Activity is not in progress") }}
                   </div>
-                  <div class="display-1" style="color: #93B954;" v-else>
+                  <div class="text-h5" style="color: #93B954;" v-else>
                     {{ $t("You already have a ticket") }}
                   </div>
+                </v-col>
+              </v-row>
+            </v-card-text>
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text>
+              <v-row align="center">
+                <v-col
+                  class="body-1"
+                  cols="12"
+                  @click="
+                    handleCopy(contractInfo.exchangeOutTokenAddress, $event)
+                  "
+                >
+                  <p>
+                    {{ $t("Token Adress") }}:
+                    {{ contractInfo.exchangeOutTokenAddress }}
+                    <v-icon>mdi-content-copy</v-icon>
+                  </p>
                 </v-col>
               </v-row>
             </v-card-text>
