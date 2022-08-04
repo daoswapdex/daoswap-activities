@@ -9,6 +9,17 @@ export const ExchangeTicketContractAddress = [
   }
 ];
 
+export const TicketAirdropContractAddress = [
+  {
+    chainId: 256,
+    address: "0x4D45A0D00ea3D382c57df1B731E50F919c741B0d"
+  },
+  {
+    chainId: 56,
+    address: "0xd5d93798fC612Dae2dA4E6Cd3F7bD86Ca55cF635"
+  }
+];
+
 export const DAOAddress = "0xc096332CAacF00319703558988aD03eC6586e704";
 export const ZeroAddress = "0x0000000000000000000000000000000000000000";
 

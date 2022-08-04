@@ -13,11 +13,15 @@ export default {
   "Activity is not in progress": "活动未在进行中",
   "You already have a ticket": "您已经拥有通证",
   "Please select the token to be used for exchange": "请选择兑换要使用的Token",
-  "Token Adress": "通证地址",
+  "Token Address": "通证地址",
   "Membership Pass": "入会通证",
   "Aurora Anniversary Celebration & Meta Universe First Industry Summit":
     "极光周年庆典暨元宇宙首届行业峰会",
   "Exchange Success": "兑换成功",
+  "Get Rewards": "领取",
+  "Get Rewards Success": "领取成功",
+  "Token Address Old": "周年庆入会凭证 DAO2022",
+  "Token Address New": "2022官方纪念凭证 DAO2022",
 
   "Stake Amount": "质押额度",
   "Stake begin in": "认购开始于",

@@ -15,27 +15,6 @@
                   )
                 }}-{{ $t("Membership Pass") }}
               </span>
-              <!-- <v-list two-line>
-                <v-list-item>
-                  <v-list-item-avatar class="mt-0 mb-0">
-                    <v-avatar size="40" class="mr-2">
-                      <img :src="require('@/assets/logo.png')" alt="list" />
-                    </v-avatar>
-                  </v-list-item-avatar>
-                  <v-list-item-content class="pt-0 pb-0">
-                    <v-list-item-title class="text-h5" style="color: #93B954">
-                      {{ $t("Membership Pass") }}
-                    </v-list-item-title>
-                    <v-list-item-subtitle class="text-body-1">
-                      {{
-                        $t(
-                          "Aurora Anniversary Celebration & Meta Universe First Industry Summit"
-                        )
-                      }}
-                    </v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list> -->
             </v-card-title>
             <v-divider class="mx-4"></v-divider>
             <v-card-text
@@ -118,13 +97,70 @@
                   "
                 >
                   <p>
-                    {{ $t("Token Adress") }}:
+                    {{ $t("Token Address") }}:
                     {{ contractInfo.exchangeOutTokenAddress }}
                     <v-icon>mdi-content-copy</v-icon>
                   </p>
                 </v-col>
               </v-row>
             </v-card-text>
+          </v-card>
+          <!-- 空投  -->
+          <v-card class="fill-width mt-10">
+            <v-card outlined>
+              <!-- 标题 -->
+              <v-card-title>
+                <v-avatar size="24" class="mr-2">
+                  <img :src="require('@/assets/logo.png')" alt="DAO" />
+                </v-avatar>
+                <span class="title font-weight-light text-body-2">
+                  {{ $t("Get Rewards") }}
+                </span>
+              </v-card-title>
+              <v-divider></v-divider>
+              <v-card-actions
+                class="justify-center"
+                v-if="
+                  contractAirdrop.hasRewardsInfo &&
+                    contractAirdrop.checkBalance &&
+                    contractAirdrop.isOpen &&
+                    !contractAirdrop.isClaim
+                "
+              >
+                <v-btn color="#93B954" dark width="80%" @click="getRewards()">
+                  {{ $t("Get Rewards") }}
+                </v-btn>
+              </v-card-actions>
+              <v-divider class="mx-4"></v-divider>
+              <v-card-text>
+                <v-row align="center">
+                  <v-col
+                    class="body-1"
+                    cols="12"
+                    @click="handleCopy(contractAirdrop.newToken, $event)"
+                  >
+                    <p>
+                      {{ $t("Token Address New") }}:
+                      {{ contractAirdrop.newToken }}
+                      <v-icon>mdi-content-copy</v-icon>
+                    </p>
+                  </v-col>
+                </v-row>
+                <v-row align="center">
+                  <v-col
+                    class="body-1"
+                    cols="12"
+                    @click="handleCopy(contractAirdrop.oldToken, $event)"
+                  >
+                    <p class="pb-0">
+                      {{ $t("Token Address Old") }}:
+                      {{ contractAirdrop.oldToken }}
+                      <v-icon>mdi-content-copy</v-icon>
+                    </p>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
           </v-card>
           <!-- 当前钱包账号 -->
           <v-card justify="center" class="fill-width mt-10">
@@ -191,11 +227,15 @@
 
 <script>
 import clip from "@/utils/clipboard";
-import { ExchangeTicketContractAddress } from "@/constants/index";
+import {
+  ExchangeTicketContractAddress,
+  TicketAirdropContractAddress
+} from "@/constants/index";
 import { getContractByABI, weiToEther, etherToWei } from "@/utils/web3";
 // 引入合约 ABI 文件
 import ActivityCoin_ABI from "@/constants/contractJson/ActivityCoin_abi.json";
 import ExchangeTicket_ABI from "@/constants/contractJson/ExchangeTicket_abi.json";
+import TicketAirdrop_ABI from "@/constants/contractJson/TicketAirdrop_abi.json";
 
 export default {
   name: "AllocationFee",
@@ -215,6 +255,15 @@ export default {
       exchangeInTokenAddress: null,
       exchangeInTokenAmount: null,
       isOpen: null
+    },
+    contractAirdrop: {
+      token: null,
+      oldToken: null,
+      newToken: null,
+      hasRewardsInfo: false,
+      checkBalance: false,
+      isOpen: false,
+      isClaim: true
     },
     // 代币信息
     exchangeOutToken: {
@@ -301,6 +350,13 @@ export default {
       if (contractInfoToken) {
         this.contractInfo.token = contractInfoToken.address;
       }
+      // airdrop
+      const contractAirdropToken = TicketAirdropContractAddress.filter(
+        info => info.chainId === parseInt(this.chainId)
+      )[0];
+      if (contractAirdropToken) {
+        this.contractAirdrop.token = contractAirdropToken.address;
+      }
     },
     // 获取合约信息
     async getContractInfo() {
@@ -342,6 +398,37 @@ export default {
           this.accountAssets.haveTicket = await contract.methods
             .haveTicket()
             .call({ from: this.address });
+        } catch (error) {
+          console.info(error);
+        }
+      }
+      if (this.contractAirdrop.token) {
+        try {
+          // 查询空投合约信息
+          const contractAirdrop = await getContractByABI(
+            TicketAirdrop_ABI,
+            this.contractAirdrop.token,
+            this.web3
+          );
+          this.contractAirdrop.oldToken = await contractAirdrop.methods
+            .oldToken()
+            .call({ from: this.address });
+          this.contractAirdrop.newToken = await contractAirdrop.methods
+            .token()
+            .call({ from: this.address });
+          this.contractAirdrop.hasRewardsInfo = await contractAirdrop.methods
+            .hasRewardsInfo(this.address)
+            .call({ from: this.address });
+          this.contractAirdrop.checkBalance = await contractAirdrop.methods
+            .checkBalance(this.address)
+            .call({ from: this.address });
+          this.contractAirdrop.isOpen = await contractAirdrop.methods
+            .isOpen()
+            .call({ from: this.address });
+          const rewardsInfo = await contractAirdrop.methods
+            .accountRewardsMap(this.address)
+            .call();
+          this.contractAirdrop.isClaim = rewardsInfo.isClaim;
         } catch (error) {
           console.info(error);
         }
@@ -452,6 +539,36 @@ export default {
             this.operationResult.snackbar = true;
             this.operationResult.text = "Exchange Success";
             this.loading = false;
+            this.getInfo();
+          })
+          .catch(e => {
+            this.loading = false;
+            console.info(e);
+          });
+      }
+    },
+    // 提取DAO
+    getRewards() {
+      if (!this.contractAirdrop.token) {
+        this.operationResult.color = "error";
+        this.operationResult.snackbar = true;
+        this.operationResult.text =
+          "Please select the token to be used for exchange";
+      } else {
+        this.loading = true;
+        // 执行合约
+        getContractByABI(
+          TicketAirdrop_ABI,
+          this.contractAirdrop.token,
+          this.web3
+        )
+          .methods.getRewards()
+          .send({ from: this.address })
+          .then(() => {
+            this.loading = false;
+            this.operationResult.snackbar = true;
+            this.operationResult.text = "Claim Success";
+            // 重新获取数据
             this.getInfo();
           })
           .catch(e => {
