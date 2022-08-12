@@ -34,6 +34,14 @@
             text
             >DAO2022</v-tab
           >
+          <v-tab
+            to="/airdrop"
+            :ripple="false"
+            class="font-weight-bold"
+            min-width="96"
+            text
+            >Airdrop</v-tab
+          >
         </v-tabs>
       </div>
 
@@ -62,6 +70,9 @@
         <v-list-item-group v-model="group" color="#93B954">
           <v-list-item to="/dao-2022">
             <v-list-item-title>DAO2022</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/airdrop">
+            <v-list-item-title>Airdrop</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

@@ -238,7 +238,7 @@ import ExchangeTicket_ABI from "@/constants/contractJson/ExchangeTicket_abi.json
 import TicketAirdrop_ABI from "@/constants/contractJson/TicketAirdrop_abi.json";
 
 export default {
-  name: "AllocationFee",
+  name: "DAO2022",
   data: () => ({
     loading: false,
     // 当前账户相关信息
