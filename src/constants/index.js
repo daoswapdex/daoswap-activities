@@ -23,11 +23,15 @@ export const TicketAirdropContractAddress = [
 export const AirdropContractAddress = [
   {
     chainId: 5777,
-    address: "0x1b3d15f282e0bC71264c05E026d3EEd6Ed8492f6"
+    address: "0x1eDBc84aEbe8A135d4A5A979E33A0cCa5c24ADCe"
   },
   {
     chainId: 256,
     address: "0x6360E2c5F546e99536171AEBc9fa1c0496551950"
+  },
+  {
+    chainId: 56,
+    address: "0x3d2Af62bdE955b43DC65ACD57e618F47f0717E02"
   }
 ];
 
