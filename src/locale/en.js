@@ -43,6 +43,8 @@ export default {
   "Get Rewards Success": "Get Rewards Success",
   "Token Address Old": "Anniversary membership certificate DAO2022",
   "Token Address New": "2022 Official Commemorative Certificate DAO2022",
+  "Token Address Old 2023": "Anniversary membership certificate DAO2023",
+  "Token Address New 2023": "2023 Official Commemorative Certificate DAO2023",
 
   "Already received": "Already received"
 };

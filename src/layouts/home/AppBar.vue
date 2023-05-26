@@ -27,6 +27,14 @@
           background-color="transparent"
         >
           <v-tab
+            to="/dao-2023"
+            :ripple="false"
+            class="font-weight-bold"
+            min-width="96"
+            text
+            >DAO2023</v-tab
+          >
+          <v-tab
             to="/dao-2022"
             :ripple="false"
             class="font-weight-bold"
@@ -68,6 +76,9 @@
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list shaped>
         <v-list-item-group v-model="group" color="#93B954">
+          <v-list-item to="/dao-2023">
+            <v-list-item-title>DAO2023</v-list-item-title>
+          </v-list-item>
           <v-list-item to="/dao-2022">
             <v-list-item-title>DAO2022</v-list-item-title>
           </v-list-item>

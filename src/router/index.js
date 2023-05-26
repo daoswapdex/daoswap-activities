@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import DAO2022 from "../views/DAO2022.vue";
+import DAO2023 from "../views/DAO2023.vue";
 import Airdrop from "../views/Airdrop.vue";
 
 Vue.use(VueRouter);
@@ -13,8 +14,13 @@ const routes = [
       {
         path: "",
         name: "Home",
-        redirect: "/airdrop",
+        redirect: "/dao-2023",
         component: () => import("@/views/home/Index.vue")
+      },
+      {
+        path: "/dao-2023",
+        name: "DAO2023",
+        component: DAO2023
       },
       {
         path: "/dao-2022",

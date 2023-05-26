@@ -42,6 +42,8 @@ export default {
   "Get Rewards Success": "领取成功",
   "Token Address Old": "周年庆入会凭证 DAO2022",
   "Token Address New": "2022官方纪念凭证 DAO2022",
+  "Token Address Old 2023": "周年庆入会凭证 DAO2023",
+  "Token Address New 2023": "2023官方纪念凭证 DAO2023",
 
   "Already received": "已领取过"
 };
