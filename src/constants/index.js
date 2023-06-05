@@ -31,7 +31,7 @@ export const AirdropContractAddress = [
   },
   {
     chainId: 56,
-    address: "0x3d2Af62bdE955b43DC65ACD57e618F47f0717E02"
+    address: "0x7184ee0F6c2CC53f2e749dC45b24fc424bFA4D2c" // "0x3d2Af62bdE955b43DC65ACD57e618F47f0717E02"
   }
 ];
 
@@ -42,7 +42,7 @@ export const ExchangeTicketContractAddress2023 = [
   },
   {
     chainId: 56,
-    address: ""
+    address: "0x3Dd1b9dC6b3eC68B15C9c2cB9C5fc7352dbCC79c"
   }
 ];
 
