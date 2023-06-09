@@ -9,11 +9,9 @@
                 <img :src="require('@/assets/logo.png')" alt="list" />
               </v-avatar>
               <span class="title font-weight-light text-body-2">
-                {{
-                  $t(
-                    "Aurora Anniversary Celebration & Meta Universe First Industry Summit"
-                  )
-                }}-{{ $t("Membership Pass") }}
+                {{ $t("2023 Aurora Anniversary Celebration") }}-{{
+                  $t("Membership Pass")
+                }}
               </span>
             </v-card-title>
             <v-divider class="mx-4"></v-divider>

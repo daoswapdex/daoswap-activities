@@ -46,5 +46,6 @@ export default {
   "Token Address Old 2023": "Anniversary membership certificate DAO2023",
   "Token Address New 2023": "2023 Official Commemorative Certificate DAO2023",
 
-  "Already received": "Already received"
+  "Already received": "Already received",
+  "2023 Aurora Anniversary Celebration": "2023 Aurora Anniversary Celebration"
 };

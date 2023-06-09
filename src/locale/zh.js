@@ -45,5 +45,6 @@ export default {
   "Token Address Old 2023": "周年庆入会凭证 DAO2023",
   "Token Address New 2023": "2023官方纪念凭证 DAO2023",
 
-  "Already received": "已领取过"
+  "Already received": "已领取过",
+  "2023 Aurora Anniversary Celebration": "2023极光社区周年庆"
 };
